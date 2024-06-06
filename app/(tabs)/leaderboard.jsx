@@ -1,44 +1,48 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { FlatList, RefreshControl, SafeAreaView, Text, View } from 'react-native';
+import React, { useState } from 'react';
 import LeaderBoardCard from "../../components/LeaderBoardCard";
 import Header from "../../components/Header";
+import useAppwrite from '../../useAppwrite';
+import { getRankers, changeRanker } from "../../appwrite";
+import { useGlobalContext } from '../../context/GlobalProvider';
+
 
 const LeaderBoard = () => {
+  const {user} = useGlobalContext();
+  const {data: data2, refetch} = useAppwrite(getRankers);
+  const update = async () => {
+    const dub = data2;
+    dub.some((item) =>  {
+      if (item.Coins <= user?.coins) {
+        changeRanker(item.$id, user?.username, user?.coins);
+        return true;
+      }
+    })
+  }
+  const [refreshing, setRefreshing] = useState(false);
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await update();
+    await refetch();
+    setRefreshing(false);
+  }
 
-  const data = [
-    {name: "User", coins: 204, id: 1},
-    {name: "User", coins: 200, id: 2},
-    {name: "User", coins: 199, id: 3},
-    {name: "User", coins: 198, id: 4},
-    {name: "User", coins: 180, id: 5},
-    {name: "User", coins: 173, id: 6},
-    {name: "User", coins: 170, id: 7},
-    {name: "User", coins: 165, id: 8},
-    {name: "User", coins: 142, id: 9},
-    {name: "User", coins: 130, id: 10},
-    {name: "User", coins: 204, id: 11},
-    {name: "User", coins: 200, id: 12},
-    {name: "User", coins: 199, id: 13},
-    {name: "User", coins: 198, id: 14},
-    {name: "User", coins: 180, id: 15},
-    {name: "User", coins: 173, id: 16},
-    {name: "User", coins: 170, id: 17},
-    {name: "User", coins: 165, id: 18},
-    {name: "User", coins: 142, id: 19},
-    {name: "User", coins: 130, id: 20},
+
+  const data = data2 ?? [
+    {Username: "User", Coins: 0, Rank: 1},
   ]
   
   return (
     <SafeAreaView className="bg-black h-full">
       <FlatList 
         data={data}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <View>
             <LeaderBoardCard 
-              rank={item.id}
-              name={item.name}
-              coins={item.coins}
+              rank={item.Rank}
+              name={item.Username}
+              coins={item.Coins}
             />
           </View>
         )}
@@ -52,11 +56,10 @@ const LeaderBoard = () => {
             <Header />
           </View>
         )}
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       />
     </SafeAreaView>
   )
 }
 
-export default LeaderBoard
-
-const styles = StyleSheet.create({})
+export default LeaderBoard;

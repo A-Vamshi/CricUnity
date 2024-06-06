@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const header = () => {
+const Header = () => {
   return (
-    <View className="w-full mt-1 rounded-xl px-2 justify-center">
+    <View className="w-full mt-1 justify-center">
           <View className="justify-around flex-row items-center">
                <View className="bg-slate-900 self-center px-2 py-2">
                     <Text className="text-white mx-2 font-bold">RANK</Text>
@@ -19,4 +19,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Header;

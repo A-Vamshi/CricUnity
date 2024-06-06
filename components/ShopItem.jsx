@@ -1,19 +1,32 @@
-import { View, Text, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, Alert } from 'react-native';
+import CustomButton from './CustomButton';
 import React from 'react';
 import { icons } from "../constants";
+import { buyItem, updateCoins } from '../appwrite';
+import { useGlobalContext } from "../context/GlobalProvider";
 
-const ShopItem = ({value, handleChangeText, price, image, text}) => {
+
+const ShopItem = ({ price, image, text}) => {
+     const {user} = useGlobalContext();
+     const handlePress = () => {
+          if (user?.coins > price) {
+               buyItem(user?.accountId, price);
+               updateCoins(user?.$id, user?.coins - price);
+          } else {
+               Alert.alert("Not enough coins", "You don't have enough coins to buy this, keep playing to earn more!");
+          }
+     }
   return (
-    <View className="bg-primary w-full m-2">
-     <View className="flex-row justify-between">
-          <View>
-          <Image 
-               source={image}
-               resizeMode="contain"
-               className="w-40 self-start ml-4 mt-[-20px]"
-          />
+    <View className="bg-primary w-full m-2 h-60">
+     <View className="flex-row justify-around">
+          <View className="">
+               <Image 
+                    source={image}
+                    resizeMode="contain"
+                    className="w-32 self-start ml-4 mt-[-20px]"
+               />
           </View>
-          <View className="w-40">
+          <View className="w-40 items-center">
                <Text className="text-white font-psemibold mt-4 px-2 text-xl">{text} for {price} <Image 
                          source={icons.cricCoin} 
                          className="w-[20px] h-[20px] p-2 self-center"
@@ -22,17 +35,13 @@ const ShopItem = ({value, handleChangeText, price, image, text}) => {
                </Text>
           </View>
      </View>
-     <View>
-          <TextInput
-               className="flex-1 text-white font-semibold text-base p-2 ml-3 mr-3 border-2 border-app rounded-2xl"
-               value={value}
-               placeholder="Enter your Email: "
-               placeholderTextColor="#7B7B8B"
-               onChangeText={handleChangeText}
+     <View className="items-center justify-center mt-2">
+          <CustomButton 
+            title="Buy"
+            containerStyles="mt-1 w-40 h-10 mb-2"
+            textStyles="text-white font-bold text-2xl"
+            handlePress={handlePress}
           />
-          <TouchableOpacity className="bg-yes rounded-md h-10 w-40 items-center justify-center self-center m-2 flex-row">
-               <Text className="text-primary font-psemibold">Buy</Text>
-          </TouchableOpacity>
      </View>
     </View>
   )

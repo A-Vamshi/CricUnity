@@ -4,29 +4,28 @@ import ShopItem from "../../components/ShopItem";
 import images from "../../constants/images";
 
 const Shop = () => {
-  const [email, setEmail] = useState("");
   const data = [
     {
-      name: "Amazon gift card worth $500",
-      price: 500000, 
+      name: "$500",
+      price: 1000, 
       id: 1,
       icon: images.amazonGC,
     },
     {
-      name: "Amazon gift card worth $1000",
-      price: 500, 
+      name: "$1000",
+      price: 2000, 
       id: 2,
       icon: images.amazonGC,
     },
     {
-      name: "Amazon gift card worth $100",
-      price: 50000, 
+      name: "$100",
+      price: 400, 
       id: 3,
       icon: images.amazonGC,
     },
     {
-      name: "Amazon gift card worth $200",
-      price: 200000, 
+      name: "$200",
+      price: 700, 
       id: 4,
       icon: images.amazonGC,
     },
@@ -39,8 +38,6 @@ const Shop = () => {
         keyExtractor={(item) => item.id}
         renderItem={({item}) => (
           <ShopItem
-            value={email}
-            handleChangeText={setEmail}
             price={item.price}
             image={item.icon}
             text={item.name}

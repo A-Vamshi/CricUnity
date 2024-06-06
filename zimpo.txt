@@ -1,0 +1,29 @@
+{ packageName: com.cricunity.cricunity }
+
+{
+     "appIndex": {"seoTitle": "Live Cricket Score - Scorecard and Match Results",
+     "webURL": "www.cricbuzz.com/live-cricket-scores/"},
+     "filters": {"matchType": ["International", "League", "Domestic", "Women"]},
+     "responseLastUpdated": "1716893251",
+     "typeMatches": [
+          {"matchType": "International", "seriesMatches": [Array]},  
+          {"matchType": "League", "seriesMatches": [Array]},
+          {"matchType": "Domestic", "seriesMatches": [Array]},
+          {"matchType": "Women", "seriesMatches": [Array]}
+     ]
+}
+{
+     "appIndex": {"seoTitle": "Current Running Cricket Series - Cricbuzz | Cricbuzz.com", "webURL": "www.cricbuzz.com/cricket-series/"},
+     "seriesMapProto": [
+          {"date": "FEBRUARY 2024", "series": [Array]}, 
+          {"date": "MAY 2024", "series": [Array]},
+          {"date": "JUNE 2024", "series": [Array]}, 
+          {"date": "JULY 2024", "series": [Array]}, 
+          {"date": "AUGUST 2024", "series": [Array]}, 
+          {"date": "SEPTEMBER 2024", "series": [Array]}, 
+          {"date": "OCTOBER 2024", "series": [Array]}, 
+          {"date": "NOVEMBER 2024", "series": [Array]}, 
+          {"date": "DECEMBER 2024", "series": [Array]}, 
+          {"date": "MAY 2025", "series": [Array]}
+     ]
+}
