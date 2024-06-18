@@ -2,15 +2,15 @@ import { Account, Avatars, Client, Databases, ID, Query } from 'react-native-app
 
 
 export const config = {
-     endpoint: "",
-     platform: "",
-     projectId: "",
-     databaseId: "",
-     userCollectionId: "",
-     questionCollectionId: "",
-     storageId: "",   
-     rankCollectionId: "",
-     buyerCollectionId: "",
+     endpoint: "https://cloud.appwrite.io/v1",
+     platform: "com.cricunity.cricunity",
+     projectId: "66517ebd0007b29abab4",
+     databaseId: "66517f4e0001b5756825",
+     userCollectionId: "66517f76002ab7603ce8",
+     questionCollectionId: "66517fa60021480c4c01",
+     storageId: "665181c5001db6715c46",   
+     rankCollectionId: "66544b820019605f01f7",
+     buyerCollectionId: "665461dd001545042899",
 }
 
 const client = new Client();
