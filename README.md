@@ -1,5 +1,13 @@
 # CricUnity
 
+<img src="/assets/images/intropPage.jpeg" alt="drawing" width="200"/> <img src="/assets/images/signUpPage.jpeg" alt="drawing" width="200"/>
+<img src="/assets/images/signInPage.jpeg" alt="drawing" width="200"/>
+<img src="/assets/images/homePage.jpeg" alt="drawing" width="200"/>
+<img src="/assets/images/leaderboardPage.jpeg" alt="drawing" width="200"/>
+<img src="/assets/images/shopPage.jpeg" alt="drawing" width="200"/>
+<img src="/assets/images/profilePage.jpeg" alt="drawing" width="200"/>
+
+
 CricUnity is a cricket betting odds platform, designed to provide real-time and reliable information about cricket odds. This mobile app is built using modern web technologies like **Appwrite**, **React Native**, and **Nativewind** to deliver a seamless and intuitive user experience.
 
 ## Features
