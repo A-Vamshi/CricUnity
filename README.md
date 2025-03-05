@@ -37,7 +37,7 @@ Follow these steps to get the project running locally.
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/CricUnity.git
+git clone https://github.com/A-Vamshi/CricUnity.git
 cd CricUnity
 ```
 Install dependencies
